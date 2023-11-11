@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Form</title>
+</head>
+<body>
+    <h1>Resume Form</h1>
+    
+    <form method="post" enctype="multipart/form-data" action="/resume-form/">
+        {% csrf_token %}
+        
+        <!-- Personal Information Section -->
+        <h2>Personal Information</h2>
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" required><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required><br>
+        
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="3" required></textarea><br>
+        
+        <!-- Education Section -->
+        <h2>Education</h2>
+        <div id="education_fields">
+            <!-- Education Fields will be added dynamically using JavaScript -->
+        </div>
+        <button type="button" id="add_education">Add Education</button><br>
+        
+        <!-- Skills Section -->
+        <h2>Skills</h2>
+        <div id="skill_fields">
+            <!-- Skill Fields will be added dynamically using JavaScript -->
+        </div>
+        <button type="button" id="add_skill">Add Skill</button><br>
+        
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+    </form>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Add Education Fields Dynamically
+            var educationIndex = 0;
+            $('#add_education').click(function () {
+                educationIndex++;
+                var educationField = `
+                    <div id="education_${educationIndex}">
+                        <label for="education_${educationIndex}_school">School/University:</label>
+                        <input type="text" id="education_${educationIndex}_school" name="education_${educationIndex}_school" required><br>
+                        
+                        <label for="education_${educationIndex}_degree">Degree:</label>
+                        <input type="text" id="education_${educationIndex}_degree" name="education_${educationIndex}_degree" required><br>
+                        
+                        <label for="education_${educationIndex}_year">Year:</label>
+                        <input type="text" id="education_${educationIndex}_year" name="education_${educationIndex}_year" required><br>
+                        
+                        <button type="button" onclick="removeEducation(${educationIndex})">Remove</button>
+                    </div>
+                `;
+                $('#education_fields').append(educationField);
+            });
+            
+            // Remove Education Fields
+            function removeEducation(index) {
+                $(`#education_${index}`).remove();
+            }
+            
+            // Add Skill Fields Dynamically
+            var skillIndex = 0;
+            $('#add_skill').click(function () {
+                skillIndex++;
+                var skillField = `
+                    <div id="skill_${skillIndex}">
+                        <label for="skill_${skillIndex}_name">Skill:</label>
+                        <input type="text" id="skill_${skillIndex}_name" name="skill_${skillIndex}_name" required><br>
+                        
+                        <button type="button" onclick="removeSkill(${skillIndex})">Remove</button>
+                    </div>
+                `;
+                $('#skill_fields').append(skillField);
+            });
+            
+            // Remove Skill Fields
+            function removeSkill(index) {
+                $(`#skill_${index}`).remove();
+            }
+        });
+    </script>
+</body>
+</html>

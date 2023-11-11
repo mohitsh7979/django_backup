@@ -1,0 +1,60 @@
+{% extends 'productapp/headerandfooter.html' %}
+{% block login %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+      .cart-color{
+        background-color: #ff523b;
+        border: none;
+
+      }
+
+      .cart-color:hover{
+        background-color: #ff523b;
+      }
+    </style>  
+</head>
+  <body>
+    <!-- <div class="btn">
+    <form action="" method="post" class="row g-3">
+        {% csrf_token %}
+        {{a.as_p}}
+        <button class="btn btn-primary">submit</button>
+
+        <div>
+        </div> -->
+        
+        {% comment %} <h1>Welcome {{request.user}}</h1> {% endcomment %}
+        <div class="container">
+            <div class="row my-3">
+             <div class="col-sm-6 offset-sm-3">
+              <h3>Login</h3>
+              <hr>
+              <form action="" method="post" novalidate class="shadow p-5">
+                {% csrf_token %}
+               <div class="mb-3">
+                 {% for i in a %}
+                    {{i.label}} {{i}} {{i.errors|striptags}}
+                 {% endfor %}
+               </div>
+              
+               <small><a href="#" style="color: #ff523b;">Forgot Password ?</a></small> <br>
+               <input type="submit" class="btn btn-primary mt-4 cart-color" value="Login">
+               <br>
+               <div class="text-center text-primary fw-bold"><small style="color: #ff523b;">New to ShoppinglyX ? <a href="/auth/Register/"
+                  class="text-dark">Create an Account</a> </small></div>
+              </form>
+             </div>
+            </div>
+           </div>
+    </form>
+  </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
+{% endblock login %}

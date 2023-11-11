@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        background-color: black;
+      }
+      
+      .container {
+        padding: 20px;
+        box-shadow: 2px 2px 20px #fff;
+        background-color: white;
+      }
+      h2 {
+        text-align: center;
+        font-family: sans-serif;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 2px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border-bottom: 1px solid gray;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Create Account</h2>
+
+      <form action="" method="post">
+        {% csrf_token %}
+        {% for i in x %}
+          {{ i.label_tag }} {{ i }} <br /> <br />
+        {% endfor %}
+        <button>Submit</button>
+      </form>
+
+      <p>Dont have account : <a href="/create/">Create Account </a> </p>
+    </div>
+  </body>
+</html>

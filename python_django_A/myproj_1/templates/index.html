@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+
+            height: 100vh;
+            border: 2px solid black;
+            display: flex;
+        }
+
+        .box{
+
+            height: 80%;
+            width: 50%;
+            border: 2px solid red;
+        }
+
+        table{
+
+            width: 100%;
+        }
+
+        h1{
+
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="box">
+
+            <form action="" method="post">
+
+                {% csrf_token %}
+
+                {% for i in f %}
+    
+                {{i.label_tag}} {{i}} <br> <br>
+                  
+                {% endfor %}
+
+                <button>Submit</button>
+            </form>
+        </div>
+        <div class="box">
+            <h1>This is my Data</h1>
+
+            <table border="2">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Mobile No</th>
+                    <th>Pin Code</th>
+                </tr>
+        
+        
+             {% for i in d  %}
+        
+             <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.address}}</td>
+                <td>{{i.mobile_no}}</td>
+                <td>{{i.pin_code}}</td>
+        
+            </tr>
+        
+               
+             {% endfor %}
+          
+          
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>

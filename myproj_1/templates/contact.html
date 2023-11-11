@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% block form %}
+
+<div class="container mt-5">
+  <form class="row g-3" action="/form/" method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+   {% for i in form_data %}
+   <div class="col-md-6">
+
+    {{i.label_tag}} {{i}} 
+
+   </div>
+   {% endfor %}
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </div>
+  </form>
+</div>
+
+
+{% endblock form %}

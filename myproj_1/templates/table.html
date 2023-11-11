@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <h2>My name is {{name}} my age is {{age}} and i from {{city}}</h2>
+     
+    {% comment %} {% for i in city %}
+    
+      <h1>{{i}}</h1>
+    
+    {% endfor %} {% endcomment %}
+
+    <table border="2">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile No</th>
+            <th>Roll No</th>
+            <th>Date</th>
+        </tr>
+
+        {% for i in data_value %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.mobile_no}}</td>
+            <td>{{i.roll_no}}</td>
+            <td>{{i.date}}</td>
+
+        </tr>
+        {% endfor %}
+    </table> 
+    
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Form</title>
+</head>
+<body>
+    <h1>Resume Form</h1>
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <!-- Personal Information Section -->
+        <h2>Personal Information</h2>
+        {{ personal_info_form.as_p }}
+
+        <input type="text" name="a">
+        <input type="text" name="a">
+        
+        <!-- Education Section -->
+        <h2>Education</h2>
+        <div id="education_fields">
+            {{ education_form.as_table }}
+        </div>
+        <button type="button" id="add_education">Add Education</button><br>
+        
+        <!-- Skills Section -->
+        <h2>Skills</h2>
+        <div id="skill_fields">
+            {{ skill_form.as_table }}
+        </div>
+        <button type="button" id="add_skill">Add Skill</button><br>
+        
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+    </form>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Add Education Fields Dynamically
+            var educationIndex = 0;
+            $('#add_education').click(function () {
+                educationIndex++;
+                var educationField = `
+                    <div id="education_${educationIndex}">
+                        {{ education_form.management_form }}
+                        <label for="{{ education_form.prefix }}-${educationIndex}-school">School/University:</label>
+                        <input type="text" id="{{ education_form.prefix }}-${educationIndex}-school" name="{{ education_form.prefix }}-${educationIndex}-school"><br>
+                        
+                        <label for="{{ education_form.prefix }}-${educationIndex}-degree">Degree:</label>
+                        <input type="text" id="{{ education_form.prefix }}-${educationIndex}-degree" name="{{ education_form.prefix }}-${educationIndex}-degree"><br>
+                        
+                        <label for="{{ education_form.prefix }}-${educationIndex}-year">Year:</label>
+                        <input type="text" id="{{ education_form.prefix }}-${educationIndex}-year" name="{{ education_form.prefix }}-${educationIndex}-year"><br>
+                        
+                        <button type="button" onclick="removeEducation(${educationIndex})">Remove</button>
+                    </div>
+                `;
+                $('#education_fields').append(educationField);
+            });
+            
+            // Remove Education Fields
+            function removeEducation(index) {
+                $(`#education_${index}`).remove();
+            }
+            
+            // Add Skill Fields Dynamically
+            var skillIndex = 0;
+            $('#add_skill').click(function () {
+                skillIndex++;
+                var skillField = `
+                    <div id="skill_${skillIndex}">
+                        {{ skill_form.management_form }}
+                        <label for="{{ skill_form.prefix }}-${skillIndex}-name">Skill:</label>
+                        <input type="text" id="{{ skill_form.prefix }}-${skillIndex}-name" name="{{ skill_form.prefix }}-${skillIndex}-name"><br>
+                        
+                        <button type="button" onclick="removeSkill(${skillIndex})">Remove</button>
+                    </div>
+                `;
+                $('#skill_fields').append(skillField);
+            });
+            
+            // Remove Skill Fields
+            function removeSkill(index) {
+                $(`#skill_${index}`).remove();
+            }
+        });
+    </script>
+</body>
+</html>

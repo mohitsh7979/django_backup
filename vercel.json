@@ -1,0 +1,25 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "django_ml/wsgi.py",
+            "use": "@vercel/python",
+            "config": {
+                "maxLambdaSize": "250mb",
+                "runtime": "python3.9"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/static/(.*)",
+            "dest": "/static/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "django_ml/wsgi.py"
+        }
+    ]
+
+    
+}

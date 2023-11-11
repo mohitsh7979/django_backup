@@ -1,0 +1,168 @@
+{% extends 'productapp/headerandfooter.html' %}
+
+{% block login %}
+  {% load static %}
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <style>
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+
+        }
+
+        .flex-item {
+            border: 1px solid rgb(240, 240, 240);
+            height: 100%;
+            width: 400px;
+            margin: 10px;
+            text-align: center;
+        }
+
+        #itme-2 {
+            flex-grow: 2;
+        }
+
+        .mencart {
+            border: 1px solid rgb(240, 240, 240);
+        }
+
+        .allcart {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 10px;
+            /* padding: 0 30px; */
+
+        }
+
+        .mencart {
+            margin: 10px 1%;
+            width: 23%;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            
+        }
+
+        .fa-star {
+            font-size: 20px;
+            color: #ff523b;
+            ;
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            color: gray;
+        }
+
+
+        .price {
+
+            font-size: 22px;
+            font-weight: bold;
+
+        }
+
+        .mencart a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .flex-item a {
+            text-decoration: none;
+            color: black;
+
+        }
+
+        .flex-itme1 {
+            border: 1px solid rgb(240, 240, 240);
+            visibility: hidden;
+        }
+
+        .productcart img{
+            width: 315px;
+            height: 300px;
+            margin-top: 5px;
+            
+            
+        }
+
+
+        @media (min-width:100px) and (max-width:1000px) {
+            .mencart {
+                width: 50%;
+            }
+        }
+
+        @media (min-width:1000px) and (max-width:1372px) {
+            .mencart {
+                width: 40%;
+            }
+        }
+
+        @media (min-width:1372px) and (max-width:1678px) {
+            .mencart {
+                width: 30%;
+            }
+        }
+
+      
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>Women's Product</h1>
+    </center>
+    <div class="flex-container">
+        <div class="flex-item " id="itme-1">
+            <div class="flex-item1">
+                <a href="/women/">All Product</a>
+                <hr>
+                <a href="/women/Below/">Price 100-500</a>
+                <hr>
+                <a href="/women/above/">Price 500-1000</a>
+                <hr>
+                <a href="/women/toper/">Toper</a>
+                <hr>
+                <a href="/women/shirt/">Jumsuits</a>
+                <hr>
+                <a href="/women/Jeans/">Jeans</a>
+          
+            </div>
+
+        </div>
+
+        <div class="flex-item" id="itme-2">
+            <div class="allcart">
+                {% for w in womenproduct %}
+
+                <div class="mencart">
+                    <a href="/productview/{{w.id}}">
+                        <div class="productcart" id="productimg">
+                            <img src="/media/{{w.images}}" alt=""/>
+                        </div>
+                        <hr />
+                        <div class="productcart" id="productdetails">
+                            <p class="title">{{w.title}}</p>
+                            <h3 class="price">Rs.{{w.price}}</h3>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    </body>
+  </html>
+{% endblock %}

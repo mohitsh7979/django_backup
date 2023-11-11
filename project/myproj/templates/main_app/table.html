@@ -1,0 +1,128 @@
+{% extends 'main_app/project_table.html' %} {% block table %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .table_container {
+        display: flex;
+        justify-content: center;
+      }
+
+      .table_box {
+        border: 2px inset;
+        height: 100%;
+        margin: 2px;
+        padding: 10px;
+      }
+
+      #table_box-1 {
+        width: 50%;
+      }
+
+      #table_box-2 {
+        width: 20%;
+        height: 85vh;
+      }
+
+      h2 {
+        border-bottom: 2px solid black;
+        text-shadow: 2px 2px 1px;
+        word-spacing: 3px;
+        letter-spacing: 3px;
+        margin-top: 2rem;
+      }
+
+      table{
+
+        height: 100%;
+        width: 100%;
+      }
+
+      .dataTables_filter{
+
+        display: flex;
+        justify-content: right;
+      }
+
+      .dataTables_filter label{
+
+        display: flex;
+        position: relative;
+        bottom: 6rem;
+      
+      }
+
+      .dataTables_filter label::before{
+
+         margin-top: 5px;
+      
+      }
+
+
+
+      .dataTables_filter label input{
+
+        width: 20rem;
+       
+      
+      }
+
+
+      .pagination{
+
+        display: flex;
+        justify-content: right;
+       
+      }
+    </style>
+  </head>
+  <body>
+    <div class="table_container">
+      <div class="table_box" id="table_box-1">
+        <h2>Project Resources</h2>
+
+        <div class="container py-5">
+          <div class="row">
+            <table id="example" class="table table-striped" style="width: 100%">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>PROJECT NAME</th>
+                  <th>DEVELOPER</th>
+                  <th>RECEIVED DATE</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in data %}
+                <tr>
+                  <td>{{i.id}}</td>
+                  <td>{{i.project_name}}</td>
+                  <td>{{i.developer}}</td>
+                  <td>{{i.updated_date}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+        <script>
+          $(document).ready(function () {
+            $("#example").DataTable();
+          });
+        </script>
+      </div>
+      <div class="table_box" id="table_box-2"></div>
+    </div>
+  </body>
+</html>
+
+{% endblock table %}

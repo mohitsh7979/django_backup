@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://unpkg.com/htmx.org@1.9.5" integrity="sha384-xcuj3WpfgjlKF+FXhSQFQ0ZNr39ln+hwjN3npfM9VBnUskLolQAcN80McRIVOPuO" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.5"></script>
+</head>
+<body>
+    
+    <form action="/create-account/" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-4 col-md-3">
+                <label for="">{{form.name.label}}</label>
+                {{form.name}}
+            </div>
+            <div class="col-4 col-md-3">
+                <label for="">{{form.phone_number.label}}</label>
+                {{form.mobile_no}}
+            </div>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Get Data</h1>
+    {% comment %} {{session}} {% endcomment %}
+
+    {% comment %} {% for i in request.session.keys %}
+      {{i}}
+    {% endfor %} {% endcomment %}
+
+    {% for i in key %}
+      {{i}} <br> <br>
+    {% endfor %}
+
+    {% comment %} {% for j in item %}
+      {{j}}
+    {% endfor %}
+
+    {% for key,value in item %}
+    {{key}} {{value}}
+    {% endfor %} {% endcomment %}
+    
+</body>
+</html>

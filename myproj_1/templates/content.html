@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body{
+
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+     
+        }
+
+        .container{
+
+            height: 70%;
+            width: 60%;
+            border: 2px solid black;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background-color: #fff;
+
+        }
+
+        .box{
+            
+
+      
+        }
+    
+
+        li{
+
+            list-style: none;
+            margin: 5px;
+        }
+
+        img{
+
+            height:80%;
+            width: 80%;
+        }
+
+        #img{
+
+
+            height: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        
+        img{
+            
+           
+           
+        }
+
+        #about_me{
+
+            height:60%;
+        }
+
+        p{
+
+            text-align: justify;
+            margin-right: 50px;
+            margin-left: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+    {% for i in data %}
+    
+    <div class="container">
+
+        <div class="box box1">
+
+            <div class="inner-box" id="img">
+                <img src="/media/{{i.image}}" alt="">
+            </div>
+            <div class="inner-box" id="about_me">
+                <h2>About Me</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aut assumenda porro vero nobis blanditiis, mollitia id officia, ipsum, quos enim iste architecto dolorum aperiam reiciendis sit autem et unde earum ratione. Veritatis culpa omnis reiciendis, suscipit dolorum ipsum explicabo inventore corrupti soluta, laborum accusamus nostrum ducimus deserunt consequatur dolores sed esse nam molestias nulla accusantium iusto quos illo. .</p>
+            </div>
+
+        </div>
+        <div class="box">
+         
+            <div class="persnol">
+                <h2>Persnol :</h2>
+                <ul>
+                    <li>Name :{{i.name}}</li>
+                    <li>Email :{{i.email}}</li>
+                    <li>Mobile No :{{i.mobile_no}}</li>
+                    <li>Address :</li>
+                </ul>
+            </div>
+            <hr>
+            <div class="objective">
+                <h2>Objective :</h2>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa quae aspernatur in ab, sit facere dolores nemo animi quod? Perferendis.
+            </div>
+            <hr>
+            <div class="skills">
+
+                <h2>Skills :</h2>
+            
+
+            </div>
+
+            
+        </div>
+
+        <p><a href="/logout/">Get out </a></p>
+        
+    </div>
+    {% endfor %}
+    
+</body>
+</html>
